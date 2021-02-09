@@ -21,8 +21,9 @@ jobs:
 
       - name: sync to s3
         run: |
-          aws s3 sync orgchart.jpg s3://res.starwarsccg.org/orgchart/
-          aws s3 sync orgchart.pdf s3://res.starwarsccg.org/orgchart/
+          aws s3 cp orgchart.jpg s3://res.starwarsccg.org/orgchart/
+          aws s3 cp orgchart.pdf s3://res.starwarsccg.org/orgchart/
+          aws cloudfront create-invalidation --distribution-id E4R02360UW5RJ --paths "/orgchart/orgchart.jpg" "/orgchart/orgchart.pdf"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
