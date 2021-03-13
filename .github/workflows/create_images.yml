@@ -37,6 +37,7 @@ jobs:
         run: |
           git config --local user.email "devon+github-actions[bot]@hubner.org"
           git config --local user.name "github-actions[bot]"
+          git add -A .
           git commit -m "generated new images" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
