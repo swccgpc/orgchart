@@ -7,17 +7,22 @@ if [ "x$(which convert)" == "x" ]; then
   exit 1
 else
 
+  export SUDO_CMD=$(which sudo)
+  echo
+  echo "sudo: $SUDO_CMD"
+  echo
+
   if [ -f /etc/ImageMagick-6/policy.xml ]; then
     echo
     echo "/etc/ImageMagick-6/policy.xml"
     ls -al /etc/ImageMagick-6/policy.xml
-    sed -i 's/rights="none" pattern="PDF"/rights="read | write" pattern="PDF"/' /etc/ImageMagick-6/policy.xml
+    $SUDO_CMD sed -i 's/rights="none" pattern="PDF"/rights="read | write" pattern="PDF"/' /etc/ImageMagick-6/policy.xml
   fi
 
   if [ -f /etc/ImageMagick-7/policy.xml ]; then
     echo
     echo "/etc/ImageMagick-7/policy.xml"
-    sed -i 's/rights="none" pattern="PDF"/rights="read | write" pattern="PDF"/' /etc/ImageMagick-7/policy.xml
+    $SUDO_CMD sed -i 's/rights="none" pattern="PDF"/rights="read | write" pattern="PDF"/' /etc/ImageMagick-7/policy.xml
   fi
 
   echo
