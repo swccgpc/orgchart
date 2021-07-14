@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - 'orgchart.pdf'
+      - 'orgchart.jpg'
 
 
 jobs:
